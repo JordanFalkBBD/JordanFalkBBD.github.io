@@ -19,8 +19,8 @@ app.listen(port , () => console.log('App listening on port ' + port));
 const axios = require('axios')
 // This is the client ID and client secret that you obtained
 // while registering on github app
-const clientID = '9e15217cce244512f12e'
-const clientSecret = '4b22b19305b352254c0c9d6170035264b9a73f63'
+const clientID = '06ac5be7de47e24d883e'
+const clientSecret = 'cba0481b3507c3a655a74328d496f609c1852b9f'
 
 // Declare the callback route
 app.get('/github/callback', (req, res) => {
