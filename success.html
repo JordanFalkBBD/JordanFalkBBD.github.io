@@ -22,7 +22,7 @@
                     'client_secret' : 'cba0481b3507c3a655a74328d496f609c1852b9f',
                     'code' : code
                 })
-            }
+            }, {mode: 'cors'}
         )
         .then(response => response.json())
         .then(response => document.querySelector('#access_token').innerHTML = response.access_token)
