@@ -9,32 +9,21 @@
     <script>
         function f() {
             let code = window.location.href.slice(window.location.href.indexOf('=')+1)
-            fetch(
-                'https://github.com/login/oauth/access_token', {
-                    method: 'POST',
-                    mode : 'cors',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Origin' : '*'
-                    },
-                    body: JSON.stringify({
-                        'client_id' : '06ac5be7de47e24d883e',
-                        'client_secret' : 'cba0481b3507c3a655a74328d496f609c1852b9f',
-                        'code' : code
-                    })
-                },
-            )
-            .then(response => response.json())
-            .then(response => document.querySelector('#access_token').innerHTML = response.access_token)
+            document.querySelector('#code').value = code
         }
     
     </script>
 
 </head>
-<body onload="f()">
+<body>
     <p>GitHub integration successful</p>
-    <p id="access_token"></p>
+    <form action="https://github.com/login/oauth/access_token" method="post">
+        <input type="hidden" name="client_id" value="06ac5be7de47e24d883e">
+        <input type="hidden" name="client_secret" value="cba0481b3507c3a655a74328d496f609c1852b9f">
+        <input type="hidden" name="code" id="code">
+        <input type="hidden" name="redirect_uri" value="https://jordanfalkbbd.github.io/access_token.html">
+        <button type="submit">Get Access Token</button>
+    </form>
 </body>
 
 </html>
