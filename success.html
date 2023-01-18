@@ -8,13 +8,13 @@
 </head>
 <script>
     function f() {
-        alert('We are here')
-        console.log(window.location.href)
+        document.querySelector('#access_token').innerHTML = window.location.href.slice(window.location.href.indexOf('=')+1)
     }
 
 </script>
 <body onload="f()">
     <p>GitHub integration successful</p>
+    <p id="access_token"></p>
 </body>
 
 </html>
