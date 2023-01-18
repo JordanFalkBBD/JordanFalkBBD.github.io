@@ -5,30 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<script>
-    function f() {
-        let code = window.location.href.slice(window.location.href.indexOf('=')+1)
-        fetch(
-            'https://github.com/login/oauth/access_token', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin' : '*'
-                },
-                body: JSON.stringify({
-                    'client_id' : '06ac5be7de47e24d883e',
-                    'client_secret' : 'cba0481b3507c3a655a74328d496f609c1852b9f',
-                    'code' : code
-                })
-            }, {mode: 'cors'}
-        )
-        .then(response => response.json())
-        .then(response => document.querySelector('#access_token').innerHTML = response.access_token)
-    }
 
-</script>
+    <script>
+        function f() {
+            let code = window.location.href.slice(window.location.href.indexOf('=')+1)
+            fetch(
+                'https://github.com/login/oauth/access_token', {
+                    method: 'POST',
+                    mode : 'cors',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin' : '*'
+                    },
+                    body: JSON.stringify({
+                        'client_id' : '06ac5be7de47e24d883e',
+                        'client_secret' : 'cba0481b3507c3a655a74328d496f609c1852b9f',
+                        'code' : code
+                    })
+                },
+            )
+            .then(response => response.json())
+            .then(response => document.querySelector('#access_token').innerHTML = response.access_token)
+        }
+    
+    </script>
+
+</head>
 <body onload="f()">
     <p>GitHub integration successful</p>
     <p id="access_token"></p>
