@@ -10,6 +10,7 @@
         function f() {
             let url = window.location.href
             console.log(url)
+            let code = url.charAt(url.indexOf('=') + 1)
 
             if (url.includes('code')){
                 // Generate code button
