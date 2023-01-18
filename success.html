@@ -24,6 +24,12 @@
             }
 
             document.querySelector('#code').value = code
+
+            document.forms['form1'].addEventListener( 'submit', (event) => {
+                    event.preventDefault();
+                    console.log(event);
+                }
+            )
         }
     
     </script>
@@ -34,7 +40,7 @@
 
     <p id="access_token"></p>
 
-    <form action="https://github.com/login/oauth/access_token" method="post">
+    <form action="https://github.com/login/oauth/access_token" method="post" id="form1">
         <input type="hidden" name="client_id" value="06ac5be7de47e24d883e">
         <input type="hidden" name="client_secret" value="cba0481b3507c3a655a74328d496f609c1852b9f">
         <input type="hidden" name="code" id="code">
