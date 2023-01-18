@@ -8,7 +8,23 @@
 </head>
 <script>
     function f() {
-        document.querySelector('#access_token').innerHTML = window.location.href.slice(window.location.href.indexOf('=')+1)
+        let code = window.location.href.slice(window.location.href.indexOf('=')+1)
+        fetch(
+            'https://github.com/login/oauth/access_token', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    'client_id' : '06ac5be7de47e24d883e',
+                    'client_secret' : 'cba0481b3507c3a655a74328d496f609c1852b9f',
+                    'code' : code
+                })
+            }
+        )
+        .then(response => response.json())
+        .then(response => document.querySelector('#access_token').innerHTML = response.access_token)
     }
 
 </script>
